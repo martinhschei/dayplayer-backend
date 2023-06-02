@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('subscriptions', function (Blueprint $table) {
@@ -26,10 +23,7 @@ return new class extends Migration
             $table->index(['user_id', 'stripe_status']);
         });
     }
-
-    /**
-     * Reverse the migrations.
-     */
+    
     public function down(): void
     {
         Schema::dropIfExists('subscriptions');
