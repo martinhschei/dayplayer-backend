@@ -3,7 +3,6 @@
 namespace Dayplayer\BackendModels\Traits;
 
 use Dayplayer\BackendModels\Profile;
-use Jenssegers\Mongodb\Eloquent\HybridRelations;
 
 trait HasProfile
 {
@@ -13,9 +12,9 @@ trait HasProfile
     {
         return $this->profile->id;
     }
-
-    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne|\Jenssegers\Mongodb\Relations\HasOne
+    
+    public function getProfileAttribute()
     {
-        return $this->hasOne(Profile::class);
+        return Profile::where('user_id', $this->id)->first();
     }
 }

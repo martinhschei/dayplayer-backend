@@ -7,9 +7,7 @@
             "Dayplayer\\BackendModels\\": "src/"
         }
     },
-    "require": {
-        "jenssegers/mongodb": "^3.9"
-    },
+    "require": {},
     "extra": {
         "laravel": {
             "providers": [
