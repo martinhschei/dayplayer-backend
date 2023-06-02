@@ -7,6 +7,13 @@
             "Dayplayer\\BackendModels\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dayplayer\\BackendModels\\DayplayerBackendModelsServiceProvider"
+            ]
+        }
+    },
     "authors": [
         {
             "name": "Martin Schei",
