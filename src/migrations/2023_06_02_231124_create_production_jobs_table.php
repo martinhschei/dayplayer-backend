@@ -14,7 +14,7 @@ return new class extends Migration
             $table->date('to_date');
             $table->unsignedBigInteger('production_id');
             $table->string('location')->nullable();
-            $table->position('string');
+            $table->string('position');
             $table->unsignedBigInteger('hourly_rate');
             $table->json('profile_matches');
             $table->unsignedBigInteger('booked_profile');
