@@ -7,6 +7,9 @@
             "Dayplayer\\BackendModels\\": "src/"
         }
     },
+    "require": {
+        "jenssegers/mongodb": "^3.9"
+    },
     "extra": {
         "laravel": {
             "providers": [
@@ -20,6 +23,5 @@
             "email": "martinhschei@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "minimum-stability": "dev"
 }
