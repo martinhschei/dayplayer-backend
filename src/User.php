@@ -2,10 +2,10 @@
 
 namespace Dayplayer\BackendModels;
 
-use App\Traits\HasProfile;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
+use Dayplayer\BackendModels\Traits\HasProfile;
 use Jenssegers\Mongodb\Eloquent\HybridRelations;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
