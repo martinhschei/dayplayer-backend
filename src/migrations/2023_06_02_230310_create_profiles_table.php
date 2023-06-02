@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('union');
             $table->date('birthday');
             $table->json('positions');
+            $table->unsignedBigInteger('user_id');
             $table->boolean('available')->default(true);
             $table->string('phone_number');
             $table->date('union_member_since')->nullable();

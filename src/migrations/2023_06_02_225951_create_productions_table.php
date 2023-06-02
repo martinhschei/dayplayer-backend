@@ -14,6 +14,7 @@ return new class extends Migration
             $table->unsignedBigInteger('price');
             $table->date('start_date');
             $table->date('end_date');
+            $table->unsignedBigInteger('user_id');
             $table->date('payment_deadline');
             $table->timestamps();
         });

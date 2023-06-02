@@ -13,7 +13,7 @@ return new class extends Migration
             $table->date('from_date');
             $table->date('to_date');
             $table->unsignedBigInteger('production_id');
-            $table->location('string');
+            $table->string('location')->nullable();
             $table->position('string');
             $table->unsignedBigInteger('hourly_rate');
             $table->json('profile_matches');

@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('manager_name');
             $table->string('manager_email');
             $table->string('manager_phone');
+            $table->unsignedBigInteger('production_id');
             $table->timestamps();
         });
     }
