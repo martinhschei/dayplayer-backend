@@ -2,13 +2,12 @@
 
 namespace Dayplayer\BackendModels;
 
-use Jenssegers\Mongodb\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class MongoDbModel extends Model
+class BaseModel extends Model
 {
     use HasFactory;
-
-
-    protected $connection = 'mongodb';
+    
+    public $guarded = [];
 }

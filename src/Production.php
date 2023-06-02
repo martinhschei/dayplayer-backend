@@ -2,15 +2,11 @@
 
 namespace Dayplayer\BackendModels;
 
-use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
+use Dayplayer\BackendModels\Gig;
+use Dayplayer\BackendModels\BaseModel;
 
-class Production extends MongoDbModel
-{
-    use DefaultOrderBy;
-    
-    protected static $orderByColumn = 'updated_at';
-    protected static $orderByColumnDirection = 'desc';
-    
+class Production extends BaseModel
+{    
     public function gigs()
     {
         return $this->hasMany(Gig::class);

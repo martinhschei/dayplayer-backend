@@ -2,18 +2,15 @@
 
 namespace Dayplayer\BackendModels;
 
-use App\Models\Profile;
-use App\Models\MongoDbModel;
+use Dayplayer\BackendModels\Gig;
 use App\Http\Resources\GigResource;
+use Dayplayer\BackendModels\Profile;
+use Dayplayer\BackendModels\BaseModel;
+use Dayplayer\BackendModels\Production;
 use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
 
-class Gig extends MongoDbModel
-{
-    use DefaultOrderBy;
-    
-    protected static $orderByColumn = 'from_date';
-    protected static $orderByColumnDirection = 'desc';
-    
+class Gig extends BaseModel
+{    
     public static function matcheshWithProfile(Profile $profile)
     {
         return Gig::with('production')->whereIn('position', $profile->positions)

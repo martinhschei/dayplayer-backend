@@ -2,23 +2,28 @@
 
 namespace Dayplayer\BackendModels;
 
-class Profile extends MongoDbModel
+use Dayplayer\BackendModels\User;
+use Dayplayer\BackendModels\BaseModel;
+use Dayplayer\BackendModels\Production;
+use Dayplayer\BackendModels\Conversation;
+
+class Profile extends BaseModel
 {
     public $casts = [
         'boolean' => 'available',
     ];
-
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo|\Jenssegers\Mongodb\Relations\BelongsTo
+    
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function conversations(): \Jenssegers\Mongodb\Relations\BelongsToMany|\Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function conversations()
     {
         return $this->belongsToMany(Conversation::class);
     }
-
-    public function productions(): \Illuminate\Database\Eloquent\Relations\HasMany|\Jenssegers\Mongodb\Relations\HasMany
+    
+    public function productions()
     {
         return $this->hasMany(Production::class);
     }

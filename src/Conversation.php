@@ -2,7 +2,9 @@
 
 namespace Dayplayer\BackendModels;
 
-class Conversation extends MongoDbModel
+use Dayplayer\BackendModels\BaseModel;
+
+class Conversation extends BaseModel
 {
     public function hasParticipant(Profile $profile): bool
     {
