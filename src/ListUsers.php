@@ -6,6 +6,6 @@ class ListUsers
 {
     public function run()
     {
-        dd("listing...");
+        dd("listing all users....");
     }
 }
