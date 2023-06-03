@@ -3,7 +3,7 @@
         'name' => 'dayplayer/backend-models',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '47e11d0917a00962590b104ae664c1df098e296f',
+        'reference' => '038e73058780e0bc4a0f94c5331e2f639a4e08ae',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'dayplayer/backend-models' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '47e11d0917a00962590b104ae664c1df098e296f',
+            'reference' => '038e73058780e0bc4a0f94c5331e2f639a4e08ae',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -285,14 +285,12 @@
             'dev_requirement' => false,
         ),
         'laravel/cashier' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => '93a04e001cf6ef5a32159d9974914e5079299c68',
+            'pretty_version' => '14.x-dev',
+            'version' => '14.9999999.9999999.9999999-dev',
+            'reference' => '305c89d1e1166162491cc82580ed70f733610abb',
             'type' => 'library',
             'install_path' => __DIR__ . '/../laravel/cashier',
-            'aliases' => array(
-                0 => '15.x-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'laravel/serializable-closure' => array(

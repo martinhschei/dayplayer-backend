@@ -1857,17 +1857,17 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "dev-master",
-            "version_normalized": "dev-master",
+            "version": "14.x-dev",
+            "version_normalized": "14.9999999.9999999.9999999-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "93a04e001cf6ef5a32159d9974914e5079299c68"
+                "reference": "305c89d1e1166162491cc82580ed70f733610abb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/93a04e001cf6ef5a32159d9974914e5079299c68",
-                "reference": "93a04e001cf6ef5a32159d9974914e5079299c68",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/305c89d1e1166162491cc82580ed70f733610abb",
+                "reference": "305c89d1e1166162491cc82580ed70f733610abb",
                 "shasum": ""
             },
             "require": {
@@ -1900,11 +1900,12 @@
                 "dompdf/dompdf": "Required when generating and downloading invoice PDF's using Dompdf (^1.0.1|^2.0).",
                 "ext-intl": "Allows for more locales besides the default \"en\" when formatting money values."
             },
-            "time": "2023-04-26T13:33:44+00:00",
+            "time": "2023-05-24T14:37:21+00:00",
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "15.x-dev"
+                    "dev-master": "14.x-dev"
                 },
                 "laravel": {
                     "providers": [

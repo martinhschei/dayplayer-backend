@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d6b008190b5a0a52b65d5d37833b732",
+    "content-hash": "a8f2e268646d054a24d4997f9a5114de",
     "packages": [
         {
             "name": "brick/math",
@@ -1776,16 +1776,16 @@
         },
         {
             "name": "laravel/cashier",
-            "version": "dev-master",
+            "version": "14.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-stripe.git",
-                "reference": "93a04e001cf6ef5a32159d9974914e5079299c68"
+                "reference": "305c89d1e1166162491cc82580ed70f733610abb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/93a04e001cf6ef5a32159d9974914e5079299c68",
-                "reference": "93a04e001cf6ef5a32159d9974914e5079299c68",
+                "url": "https://api.github.com/repos/laravel/cashier-stripe/zipball/305c89d1e1166162491cc82580ed70f733610abb",
+                "reference": "305c89d1e1166162491cc82580ed70f733610abb",
                 "shasum": ""
             },
             "require": {
@@ -1818,10 +1818,11 @@
                 "dompdf/dompdf": "Required when generating and downloading invoice PDF's using Dompdf (^1.0.1|^2.0).",
                 "ext-intl": "Allows for more locales besides the default \"en\" when formatting money values."
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "15.x-dev"
+                    "dev-master": "14.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1859,7 +1860,7 @@
                 "issues": "https://github.com/laravel/cashier/issues",
                 "source": "https://github.com/laravel/cashier"
             },
-            "time": "2023-04-26T13:33:44+00:00"
+            "time": "2023-05-24T14:37:21+00:00"
         },
         {
             "name": "laravel/serializable-closure",
