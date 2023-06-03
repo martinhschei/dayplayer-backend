@@ -11,10 +11,11 @@ trait HasPackageFactory
 
     protected static function newFactory()
     {
-        $package = Str::before(get_called_class(), 'Models\\');
+        // $package = Str::before(get_called_class(), 'Models\\');
         $modelName = Str::after(get_called_class(), 'Models\\');
-        $path = $package.'Database\\Factories\\Dayplayer\\'.$modelName.'Factory';
-        
+        dd($modelName);
+        $path = 'Database\\Factories\\Dayplayer\\BackendModels'.$modelName.'Factory';
+
         return $path::new();
     }
 }
