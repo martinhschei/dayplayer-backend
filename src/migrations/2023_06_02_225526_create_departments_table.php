@@ -13,7 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('manager_name');
             $table->string('manager_email');
-            $table->string('manager_phone');
+            $table->string('manager_phone')->nullable();
             $table->unsignedBigInteger('production_id');
             $table->timestamps();
         });
