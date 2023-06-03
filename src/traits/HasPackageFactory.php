@@ -11,9 +11,7 @@ trait HasPackageFactory
 
     protected static function newFactory()
     {
-        // $package = Str::before(get_called_class(), 'Models\\');
         $modelName = Str::after(get_called_class(), 'Models\\');
-        dd($modelName);
         $path = 'Database\\Factories\\Dayplayer\\BackendModels'.$modelName.'Factory';
 
         return $path::new();
