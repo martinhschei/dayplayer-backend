@@ -4,14 +4,14 @@ namespace Dayplayer\BackendModels;
 
 use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
+use Dayplayer\BackendModels\Profile;
 use Illuminate\Notifications\Notifiable;
-use Dayplayer\BackendModels\Traits\HasProfile;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasProfile;
+    use HasApiTokens, HasFactory, Notifiable;
     
     protected $connection = 'mysql';
 
@@ -23,7 +23,7 @@ class User extends Authenticatable
     public $casts = [
         'email_verified' => 'boolean',
     ];
-
+    
     public static function boot() {
         parent::boot();
 
@@ -35,6 +35,16 @@ class User extends Authenticatable
     public function hasProfile() 
     {
         return ! is_null($this->profile);
+    }
+
+    public function profileId()
+    {
+        return $this->profile->id;
+    }
+    
+    public function getProfileAttribute()
+    {
+        return $this->hasOne(Profile::class);
     }
 
     public function createDefaultProfile($firstName, $lastName)
