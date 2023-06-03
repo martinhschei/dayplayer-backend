@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('end_date');
             $table->unsignedBigInteger('user_id');
             $table->date('payment_deadline');
+            $table->string('payment_status')->default('unpaid');
             $table->timestamps();
         });
     }
