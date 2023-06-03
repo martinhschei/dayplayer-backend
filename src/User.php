@@ -43,11 +43,11 @@ class User extends Authenticatable
         return $this->profile->id;
     }
     
-    public function getProfileAttribute()
+    public function profile()
     {
         return $this->hasOne(Profile::class);
     }
-
+    
     public function createDefaultProfile($firstName, $lastName)
     {
         $profileData = [
