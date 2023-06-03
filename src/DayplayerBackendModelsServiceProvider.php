@@ -11,7 +11,7 @@ class DayplayerBackendModelsServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+
     }
 
     /**
@@ -20,6 +20,5 @@ class DayplayerBackendModelsServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->loadMigrationsFrom(__DIR__.'/migrations/');
-        $this->withFactories(realpath(__DIR__.'/factories/'));
     }
 }
