@@ -14,13 +14,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Billable;
 
-    protected $connection = 'mysql';
-
     const TYPE_DAYPLAYER = 'dayplayer';
     const TYPE_PRODUCTION = 'production';
     const TYPE_INTEGRATION = 'integration';
     
     public $guarded = [];
+    
     public $casts = [
         'email_verified' => 'boolean',
     ];
@@ -47,7 +46,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
-    
+
     public function createDefaultProfile($firstName, $lastName)
     {
         $profileData = [

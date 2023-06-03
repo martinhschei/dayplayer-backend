@@ -3,11 +3,11 @@
 namespace Dayplayer\BackendModels;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Dayplayer\BackendModels\Traits\HasPackageFactory;
 
 class BaseModel extends Model
 {
-    use HasFactory;
+    use HasPackageFactory;
     
     public $guarded = [];
 }
