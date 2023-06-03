@@ -56,7 +56,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
-    
+
     public function createDefaultProfile($firstName, $lastName)
     {
         $profileData = [
@@ -84,17 +84,12 @@ class User extends Authenticatable
     {
         return $this->type == self::TYPE_PRODUCTION;
     }
-
+    
     public function isDayplayer(): bool
     {
         return $this->type == self::TYPE_DAYPLAYER;
     }
 
-    public function productions()
-    {
-        return $this->hasMany(Production::class);
-    }
-    
     public function uniqueManagers()
     {
         $managers = collect([]);
