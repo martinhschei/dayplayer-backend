@@ -2,29 +2,28 @@
 
 namespace Dayplayer\BackendModels;
 
-use Dayplayer\BackendModels\Gig;
 use App\Http\Resources\GigResource;
 use Dayplayer\BackendModels\Profile;
 use Dayplayer\BackendModels\BaseModel;
 use Dayplayer\BackendModels\Production;
 use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
 
-class Gig extends BaseModel
-{    
+class ProductionJob extends BaseModel
+{
     public static function matcheshWithProfile(Profile $profile)
     {
-        return Gig::with('production')->whereIn('position', $profile->positions)
+        return ProductionJob::with('production')->whereIn('position', $profile->positions)
             ->where('from_date', '>', now()->format('Y-m-d'))->get();            
     }
     
     public static function startsTomorrow()
     {
-        return Gig::where('from_date', '=', now()->addDays()->format('Y-m-d'))->get();
+        return ProductionJob::where('from_date', '=', now()->addDays()->format('Y-m-d'))->get();
     }
     
     public static function ongoing()
     {
-        return Gig::where('from_date', '<=', now()->format('Y-m-d'))
+        return ProductionJob::where('from_date', '<=', now()->format('Y-m-d'))
             ->where('to_date', '>', now()->format('Y-m-d'))->get();
     }
 
@@ -55,7 +54,7 @@ class Gig extends BaseModel
         $this->update([
             'profile_matches' => $profiles
         ]);
-
+        
         $this->save();
     }
 }

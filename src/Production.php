@@ -7,9 +7,9 @@ use Dayplayer\BackendModels\BaseModel;
 
 class Production extends BaseModel
 {    
-    public function gigs()
+    public function jobs()
     {
-        return $this->hasMany(Gig::class);
+        return $this->hasMany(ProductionJob::class);
     }
     
     public function departments()
