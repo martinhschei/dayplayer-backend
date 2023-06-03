@@ -3,7 +3,6 @@
 namespace Dayplayer\BackendModels;
 
 use Dayplayer\BackendModels\User;
-use Dayplayer\BackendModels\BaseModel;
 use Dayplayer\BackendModels\Production;
 use Dayplayer\BackendModels\Conversation;
 

@@ -10,13 +10,13 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->string('bio', 1024)->nullable();
             $table->string('union');
             $table->date('birthday');
             $table->json('positions');
+            $table->string('phone_number');
             $table->unsignedBigInteger('user_id');
             $table->boolean('available')->default(true);
-            $table->string('phone_number');
+            $table->string('bio', 1024)->nullable();
             $table->date('union_member_since')->nullable();
             $table->timestamps();
         });

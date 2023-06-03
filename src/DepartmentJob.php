@@ -4,26 +4,25 @@ namespace Dayplayer\BackendModels;
 
 use App\Http\Resources\GigResource;
 use Dayplayer\BackendModels\Profile;
-use Dayplayer\BackendModels\BaseModel;
 use Dayplayer\BackendModels\Production;
 use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
 
-class ProductionJob extends BaseModel
+class DepartmentJob extends BaseModel
 {
     public static function matcheshWithProfile(Profile $profile)
     {
-        return ProductionJob::with('production')->whereIn('position', $profile->positions)
+        return DepartmentJob::with('production')->whereIn('position', $profile->positions)
             ->where('from_date', '>', now()->format('Y-m-d'))->get();            
     }
     
     public static function startsTomorrow()
     {
-        return ProductionJob::where('from_date', '=', now()->addDays()->format('Y-m-d'))->get();
+        return DepartmentJob::where('from_date', '=', now()->addDays()->format('Y-m-d'))->get();
     }
     
     public static function ongoing()
     {
-        return ProductionJob::where('from_date', '<=', now()->format('Y-m-d'))
+        return DepartmentJob::where('from_date', '<=', now()->format('Y-m-d'))
             ->where('to_date', '>', now()->format('Y-m-d'))->get();
     }
 
@@ -44,8 +43,7 @@ class ProductionJob extends BaseModel
                         'birthday' => $profile->birthday,
                         'available' => $profile->available,
                         'positions' => $profile->positions,
-                        'last_name' => $profile->last_name,
-                        'first_name' => $profile->first_name,
+                        'name' => $profile->user->name,
                         'phone_number' => $profile->phone_number,
                         'union_member_since' => $profile->union_member_since
                     ];

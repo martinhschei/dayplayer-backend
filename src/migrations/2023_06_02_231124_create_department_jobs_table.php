@@ -8,11 +8,11 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('production_jobs', function (Blueprint $table) {
+        Schema::create('department_jobs', function (Blueprint $table) {
             $table->id();
             $table->date('from_date');
             $table->date('to_date');
-            $table->unsignedBigInteger('production_id');
+            $table->unsignedBigInteger('department_id');
             $table->string('location')->nullable();
             $table->string('position');
             $table->unsignedBigInteger('hourly_rate');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-
+    
     public function down(): void
     {
         Schema::dropIfExists('production_jobs');

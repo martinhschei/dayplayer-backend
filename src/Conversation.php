@@ -2,8 +2,6 @@
 
 namespace Dayplayer\BackendModels;
 
-use Dayplayer\BackendModels\BaseModel;
-
 class Conversation extends BaseModel
 {
     public function hasParticipant(Profile $profile): bool
