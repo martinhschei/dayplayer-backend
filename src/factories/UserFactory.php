@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Dayplayer\BackendModels;
 
 use Illuminate\Support\Str;
 use Dayplayer\BackendModels\User;

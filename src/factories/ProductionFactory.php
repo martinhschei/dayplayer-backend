@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Dayplayer\BackendModels;
 
 use Dayplayer\BackendModels\Profile;
 use Illuminate\Database\Eloquent\Factories\Factory;

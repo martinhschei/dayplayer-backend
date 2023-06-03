@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Dayplayer\BackendModels;
 
 use Carbon\Carbon;
 use Dayplayer\BackendModels\Production;
