@@ -8,7 +8,7 @@ use Dayplayer\BackendModels\Production;
 use Dayplayer\BackendModels\Conversation;
 
 class Profile extends BaseModel
-{
+{    
     public $casts = [
         'boolean' => 'available',
     ];
