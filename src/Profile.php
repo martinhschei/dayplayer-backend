@@ -17,14 +17,4 @@ class Profile extends BaseModel
     {
         return $this->belongsTo(User::class);
     }
-
-    public function conversations()
-    {
-        return $this->belongsToMany(Conversation::class);
-    }
-    
-    public function productions()
-    {
-        return $this->hasMany(Production::class);
-    }
 }

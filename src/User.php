@@ -37,6 +37,16 @@ class User extends Authenticatable
         return ! is_null($this->profile);
     }
 
+    public function conversations()
+    {
+        return $this->belongsToMany(Conversation::class);
+    }
+    
+    public function productions()
+    {
+        return $this->hasMany(Production::class);
+    }
+
     public function profileId()
     {
         return $this->profile->id;
@@ -46,7 +56,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
-
+    
     public function createDefaultProfile($firstName, $lastName)
     {
         $profileData = [
