@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->unsignedBigInteger('hourly_rate');
             $table->unsignedBigInteger('department_id');
-            $table->json('profile_matches')->default([]);
+            $table->json('profile_matches')->nullable();
             $table->unsignedBigInteger('booked_profile')->nullable();
             $table->timestamps();
         });
