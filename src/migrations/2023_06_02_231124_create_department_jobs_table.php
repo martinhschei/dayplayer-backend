@@ -10,14 +10,14 @@ return new class extends Migration
     {
         Schema::create('department_jobs', function (Blueprint $table) {
             $table->id();
-            $table->date('from_date');
             $table->date('to_date');
-            $table->unsignedBigInteger('department_id');
-            $table->string('location')->nullable();
+            $table->date('from_date');
             $table->string('position');
+            $table->string('location')->nullable();
             $table->unsignedBigInteger('hourly_rate');
-            $table->json('profile_matches');
-            $table->unsignedBigInteger('booked_profile');
+            $table->unsignedBigInteger('department_id');
+            $table->json('profile_matches')->default([]);
+            $table->unsignedBigInteger('booked_profile')->nullable();
             $table->timestamps();
         });
     }
