@@ -9,6 +9,10 @@ use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
 
 class DepartmentJob extends BaseModel
 {
+    public $casts = [
+        'profile_matches' => 'array',
+    ];
+    
     public static function matcheshWithProfile(Profile $profile)
     {
         return DepartmentJob::with('production')->whereIn('position', $profile->positions)
