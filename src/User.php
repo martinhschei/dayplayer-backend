@@ -59,15 +59,7 @@ class User extends Authenticatable
     
     public function createDefaultProfile()
     {
-        $this->profile()->create([
-            'bio' => "",
-            'union' => "",
-            'birthday' => "",
-            'positions' => [],
-            'available' => false,
-            'phone_number' => "",
-            'union_member_since' => "",
-        ]);
+        $this->profile()->create();
     }
     
     public function isIntegration(): bool
