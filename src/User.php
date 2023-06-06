@@ -56,9 +56,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
-
+    
     public function createDefaultProfile()
-    {        
+    {
         $this->profile()->create([
             'bio' => "",
             'union' => "",
