@@ -9,6 +9,7 @@ use Dayplayer\BackendModels\Conversation;
 class Profile extends BaseModel
 {    
     public $casts = [
+        'positions' => 'array',
         'boolean' => 'available',
     ];
     
