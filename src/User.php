@@ -57,14 +57,9 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
 
-    public function createDefaultProfile($firstName, $lastName)
-    {
-        $profileData = [
-            'last_name' => $lastName,
-            'first_name' => $firstName,
-        ];
-        
-        $this->profile()->create(array_merge($profileData, [
+    public function createDefaultProfile()
+    {        
+        $this->profile()->create([
             'bio' => "",
             'union' => "",
             'birthday' => "",
@@ -72,7 +67,7 @@ class User extends Authenticatable
             'available' => false,
             'phone_number' => "",
             'union_member_since' => "",
-        ]));
+        ]);
     }
     
     public function isIntegration(): bool
