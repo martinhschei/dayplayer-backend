@@ -14,6 +14,7 @@ return new class extends Migration
             $table->date('birthday')->nullable();
             $table->json('positions')->nullable();
             $table->string('bio', 1024)->nullable();
+            $table->unsignedBigInteger('user_id');
             $table->string('phone_number')->nullable();
             $table->boolean('available')->default(true);
             $table->date('union_member_since')->nullable();
