@@ -59,7 +59,10 @@ class User extends Authenticatable
     
     public function createDefaultProfile()
     {
-        $this->profile()->create();
+        $this->profile()->create([
+            'birthday' => now()->format('Y-m-d'),
+            'union_member_since' => now()->format('Y-m-d'),
+        ]);
     }
     
     public function isIntegration(): bool
