@@ -12,7 +12,6 @@ return new class extends Migration
             $table->id();
             $table->string('union')->nullable();
             $table->date('birthday')->nullable();
-            $table->unsignedBigInteger('user_id');
             $table->json('positions')->nullable();
             $table->string('bio', 1024)->nullable();
             $table->string('phone_number')->nullable();
