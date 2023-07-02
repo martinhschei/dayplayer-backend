@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace Dayplayer\BackendModels;
 
 use Illuminate\Foundation\Http\FormRequest;
 
