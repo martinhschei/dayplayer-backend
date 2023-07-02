@@ -3,7 +3,12 @@
 namespace Dayplayer\BackendModels;
 
 class Production extends BaseModel
-{    
+{   
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+    
     public function departments()
     {
         return $this->hasMany(Department::class);
