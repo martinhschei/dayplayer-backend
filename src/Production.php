@@ -4,6 +4,16 @@ namespace Dayplayer\BackendModels;
 
 class Production extends BaseModel
 {   
+    public static function productionTypeDisplayNames()
+    {
+        return [
+            'episodic' => 'Episodic',
+            'commercial' => 'Commercial',
+            'low_budget' => 'Low budget',
+            'feature_film' => 'Feature film',
+        ];
+    }
+
     public function payments()
     {
         return $this->hasMany(Payment::class);
