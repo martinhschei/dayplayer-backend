@@ -47,37 +47,43 @@ class PriceCalculator
 
     function generatePaymentDates($interval) 
     {
-        $start = Carbon::createFromFormat('Y-m-d', $this->startDate)->addDays(3);
-        $end = Carbon::createFromFormat('Y-m-d', $this->endDate);
-    
-        $currentDate = $start;
-        $paymentDates = []; // initialize this array to prevent errors when $start > $end
+        $numberOfPayments = -1;
+
+        if ($interval == 7) {
+            $numberOfPayments = $this->productionDaysInCalendarTimes['weeks'];
+        }
         
-        while ($currentDate->lte($end)) {
-            $paymentDates[] = $currentDate->toDateString();
-            $currentDate = $currentDate->addDays($interval);
-            if ($currentDate->gt($end)) {
-                if ($currentDate->diffInDays($end, false) > 0) {
-                    $paymentDates[] = $end->toDateString();
-                }
-                break;
-            }
+        if ($interval == 30) {
+            $numberOfPayments = $this->productionDaysInCalendarTimes['months'];
+        }
+        
+        if ($numberOfPayments == -1) {
+            return [];
+        }
+
+        $paymentDates = [];
+        $currentDate = Carbon::createFromFormat('Y-m-d', $this->startDate)->addDays(3);
+        
+        for ($i = 0; $i < $numberOfPayments; $i++) 
+        {
+            $paymentDates[] = $currentDate;
+            $currentDate->addDays($interval);
         }
         
         return $paymentDates;
     }
     
-    
     private function options()
     {
         $options = [
             [
-                'displayName' => 'Credit card',
-                'value' => 'credit_card',
-                'text' => "$ {$this->creditCardPrice()} paid now with credit card. {$this->discount()}% discount on base price.",
-                'price' => $this->creditCardPrice(),
                 'discount' => $this->discount(),
+                'value' => 'credit_card',
+                'displayName' => 'Credit card',
+                'price' => $this->creditCardPrice(),
+                'payment_dates' => [now()->format('Y-m-d')],
                 'payments' => 1,
+                'text' => "$ {$this->creditCardPrice()} paid now with credit card. {$this->discount()}% discount on base price.",
             ],
             $this->canPayWeekly() ? [
                 'discount' => 0,
@@ -98,7 +104,7 @@ class PriceCalculator
                 'text' => "$ {$this->monthlyPrice()} due every 4 weeks - {$this->productionDaysInCalendarTimes()['months']} payments",
             ]  : null,
         ];
-    
+        
         return collect($options)->reject(function ($option) {
             return is_null($option);
         })->values();
