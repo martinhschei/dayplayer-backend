@@ -47,20 +47,8 @@ class PriceCalculator
 
     function generatePaymentDates($interval) 
     {
-        $numberOfPayments = -1;
-
-        if ($interval == 7) {
-            $numberOfPayments = $this->productionDaysInCalendarTimes()['weeks'];
-        }
+        $numberOfPayments = $this->productionDaysInCalendarTimes()[$interval];
         
-        if ($interval == 30) {
-            $numberOfPayments = $this->productionDaysInCalendarTimes()['months'];
-        }
-        
-        if ($numberOfPayments == -1) {
-            return [];
-        }
-
         $paymentDates = [];
         $currentDate = Carbon::createFromFormat('Y-m-d', $this->startDate)->addDays(3);
         
@@ -81,7 +69,9 @@ class PriceCalculator
                 'value' => 'credit_card',
                 'displayName' => 'Credit card',
                 'price' => $this->creditCardPrice(),
-                'payment_dates' => [now()->format('Y-m-d')],
+                'payment_dates' => [
+                    now()->addDays(3),
+                ],
                 'payments' => 1,
                 'text' => "$ {$this->creditCardPrice()} paid now with credit card. {$this->discount()}% discount on base price.",
             ],
@@ -90,7 +80,7 @@ class PriceCalculator
                 'value' => 'weekly',
                 'displayName' => 'Weekly',
                 'price' => $this->weeklyPrice(),
-                'payment_dates' => $this->generatePaymentDates(7),
+                'payment_dates' => $this->generatePaymentDates('weeks'),
                 'payments' => $this->productionDaysInCalendarTimes()['weeks'],
                 'text' => "$ {$this->weeklyPrice()} due every 7 days - {$this->productionDaysInCalendarTimes()['weeks']} payments",
             ]  : null,
@@ -99,7 +89,7 @@ class PriceCalculator
                 'value' => 'monthly',
                 'displayName' => 'Monthly',
                 'price' =>  $this->monthlyPrice(),
-                'payment_dates' => $this->generatePaymentDates(30),
+                'payment_dates' => $this->generatePaymentDates('months'),
                 'payments' => $this->productionDaysInCalendarTimes()['months'],
                 'text' => "$ {$this->monthlyPrice()} due every 4 weeks - {$this->productionDaysInCalendarTimes()['months']} payments",
             ]  : null,
