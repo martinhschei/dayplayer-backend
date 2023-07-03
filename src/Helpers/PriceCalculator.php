@@ -54,7 +54,7 @@ class PriceCalculator
         }
         
         if ($interval == 30) {
-            $numberOfPayments = $this->productionDaysInCalendarTimes['months'];
+            $numberOfPayments = $this->productionDaysInCalendarTimes()['months'];
         }
         
         if ($numberOfPayments == -1) {
