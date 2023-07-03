@@ -48,9 +48,9 @@ class PriceCalculator
     function generatePaymentDates($interval) 
     {
         $numberOfPayments = -1;
-
+        
         if ($interval == 7) {
-            $numberOfPayments = $this->productionDaysInCalendarTimes['weeks'];
+            $numberOfPayments = $this->productionDaysInCalendarTimes()['weeks'];
         }
         
         if ($interval == 30) {
