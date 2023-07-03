@@ -1,5 +1,7 @@
 <?php
 
+namespace Dayplayer\BackendModels\Helpers;
+
 use Illuminate\Support\Arr;
 use Dayplayer\BackendModels\Payment;
 use Dayplayer\BackendModels\Helpers\PriceCalculator;
@@ -13,7 +15,7 @@ class PaymentsManager
             $production->end_date,
             $production->departments()->count()
         );
-        
+
         $priceOption = $price->getOptionsForPaymentMethod($production->payment_method);
         
         collect($priceOption['payment_dates'])->each(function ($paymentDate) use ($priceOption) {
