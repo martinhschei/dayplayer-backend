@@ -4,6 +4,7 @@ namespace Dayplayer\BackendModels\Helpers;
 
 use DateTime;
 use Carbon\Carbon;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Log;
 
 class PriceCalculator
@@ -30,6 +31,13 @@ class PriceCalculator
         ];
     }
 
+    public function getOptionsForPaymentMethod($paymentMethod)
+    {
+        return collect(Arr::get($this->getPrices(), 'options'))
+            ->where('value', $paymentMethod)
+            ->first();
+    }
+
     public function getPrices()
     {
         return
@@ -44,7 +52,7 @@ class PriceCalculator
             'options' => $this->options()
         ];
     }
-    
+
     function generatePaymentDates($interval) 
     {
         $numberOfPayments = $this->productionDaysInCalendarTimes()[$interval];
