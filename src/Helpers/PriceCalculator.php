@@ -48,7 +48,7 @@ class PriceCalculator
     function generatePaymentDates($interval) 
     {
         $numberOfPayments = -1;
-        
+
         if ($interval == 7) {
             $numberOfPayments = $this->productionDaysInCalendarTimes()['weeks'];
         }
@@ -66,8 +66,8 @@ class PriceCalculator
         
         for ($i = 0; $i < $numberOfPayments; $i++) 
         {
-            $paymentDates[] = $currentDate;
-            $currentDate->addDays($interval);
+            $paymentDates[] = $currentDate->format('Y-m-d');
+            $currentDate = $currentDate->addDays($interval);
         }
         
         return $paymentDates;
