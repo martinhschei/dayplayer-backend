@@ -48,14 +48,19 @@ class PriceCalculator
     function generatePaymentDates($interval) 
     {
         $numberOfPayments = $this->productionDaysInCalendarTimes()[$interval];
-        
         $paymentDates = [];
         $currentDate = Carbon::createFromFormat('Y-m-d', $this->startDate)->addDays(3);
         
         for ($i = 0; $i < $numberOfPayments; $i++) 
         {
             $paymentDates[] = $currentDate->format('Y-m-d');
-            $currentDate = $currentDate->addDays($interval);
+
+            if ($interval == "weeks") {
+                $currentDate = $currentDate->addWeeks(1);
+            }
+            if ($interval == "months") {
+                $currentDate = $currentDate->addMonths(1);
+            }
         }
         
         return $paymentDates;
