@@ -36,6 +36,8 @@ class PriceCalculator
         [
             'base_price' => $this->price,
             'time' => [
+                'start' => $this->startDate,
+                'end' => $this->endDate,
                 'calendar' => $this->productionDaysInCalendarTimes(),
                 'text' => $this->explanation(),
             ],
