@@ -12,11 +12,11 @@ class PaymentsManager
     public static function createPaymentsForProduction(Production $production)
     {
         $price = new PriceCalculator(
-            $production->start_date,
-            $production->end_date,
-            $production->departments()->count()
+            $production->start_date->format('Y-m-d'),
+            $production->end_date->format('Y-m-d'),
+            $production->departments()->count(),
         );
-
+        
         $priceOption = $price->getOptionsForPaymentMethod($production->payment_method);
         
         collect($priceOption['payment_dates'])->each(function ($paymentDate) use ($priceOption) {
