@@ -21,7 +21,7 @@ class PriceCalculator
 
         $this->calculatePrice();
     }
-
+    
     private function pricing()
     {
         return [
@@ -43,15 +43,13 @@ class PriceCalculator
         ];
     }
 
-    function generatePaymentDates($startDate, $endDate, $interval) 
-    {
-        $paymentDates = [];
-        
-        $start = Carbon::createFromFormat('Y-m-d', $startDate)->addDays(3);  // Add the 3-day buffer
-        $end = Carbon::createFromFormat('Y-m-d', $endDate);
+    function generatePaymentDates($interval) 
+    {        
+        $start = Carbon::createFromFormat('Y-m-d', $this->startDate)->addDays(3);
+        $end = Carbon::createFromFormat('Y-m-d', $this->endDate);
 
         $currentDate = $start;
-
+        
         while ($currentDate->lte($end)) {
             $paymentDates[] = $currentDate->toDateString();
             $currentDate = $currentDate->addDays($interval);
@@ -60,7 +58,7 @@ class PriceCalculator
                 break;
             }
         }
-    
+        
         return $paymentDates;
     }
     
@@ -76,23 +74,22 @@ class PriceCalculator
                 'payments' => 1,
             ],
             $this->canPayWeekly() ? [
-                'displayName' => 'Weekly',
-                'value' => 'weekly',
-                'text' => "$ {$this->weeklyPrice()} due every 7 days - {$this->productionDaysInCalendarTimes()['weeks']} payments",
                 'discount' => 0,
-                'payment_dates' => $this->generatePaymentDates($this->startDate, $this->endDate, 30),
+                'value' => 'weekly',
+                'displayName' => 'Weekly',
                 'price' => $this->weeklyPrice(),
-
+                'payment_dates' => $this->generatePaymentDates(7),
                 'payments' => $this->productionDaysInCalendarTimes()['weeks'],
+                'text' => "$ {$this->weeklyPrice()} due every 7 days - {$this->productionDaysInCalendarTimes()['weeks']} payments",
             ]  : null,
             $this->canPayMonthly() ? [
-                'displayName' => 'Monthly',
-                'value' => 'monthly',
-                'text' => "$ {$this->monthlyPrice()} due every 4 weeks - {$this->productionDaysInCalendarTimes()['months']} payments",
                 'discount' => 0,
+                'value' => 'monthly',
+                'displayName' => 'Monthly',
                 'price' =>  $this->monthlyPrice(),
-                'payment_dates' => $this->generatePaymentDates($this->startDate, $this->endDate, 30),
+                'payment_dates' => $this->generatePaymentDates(30),
                 'payments' => $this->productionDaysInCalendarTimes()['months'],
+                'text' => "$ {$this->monthlyPrice()} due every 4 weeks - {$this->productionDaysInCalendarTimes()['months']} payments",
             ]  : null,
         ];
     
@@ -101,7 +98,6 @@ class PriceCalculator
         })->values();
     }
     
-
     private function weeklyPrice()
     {
         $result = $this->price / $this->productionDaysInCalendarTimes()['weeks'];
@@ -120,7 +116,6 @@ class PriceCalculator
         return floor($result);
     }
     
-
     private function discount()
     {
         return 10;
