@@ -44,7 +44,7 @@ class PriceCalculator
             'options' => $this->options()
         ];
     }
-
+    
     function generatePaymentDates($interval) 
     {
         $numberOfPayments = $this->productionDaysInCalendarTimes()[$interval];
