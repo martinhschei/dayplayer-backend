@@ -46,23 +46,27 @@ class PriceCalculator
     }
 
     function generatePaymentDates($interval) 
-    {        
+    {
         $start = Carbon::createFromFormat('Y-m-d', $this->startDate)->addDays(3);
         $end = Carbon::createFromFormat('Y-m-d', $this->endDate);
-
+    
         $currentDate = $start;
+        $paymentDates = []; // initialize this array to prevent errors when $start > $end
         
         while ($currentDate->lte($end)) {
             $paymentDates[] = $currentDate->toDateString();
             $currentDate = $currentDate->addDays($interval);
             if ($currentDate->gt($end)) {
-                $paymentDates[] = $end->toDateString();
+                if ($currentDate->diffInDays($end, false) > 0) {
+                    $paymentDates[] = $end->toDateString();
+                }
                 break;
             }
         }
         
         return $paymentDates;
     }
+    
     
     private function options()
     {
