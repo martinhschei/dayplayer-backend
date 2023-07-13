@@ -3,12 +3,7 @@
 namespace Dayplayer\BackendModels;
 
 class Production extends BaseModel
-{   
-    public $casts = [
-        'end_date' => 'date',
-        'start_date' => 'date',
-    ];
-    
+{
     public static function productionTypeDisplayNames()
     {
         return [

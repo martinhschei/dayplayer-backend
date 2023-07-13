@@ -30,7 +30,7 @@ class PriceCalculator
             'department' => 10,
         ];
     }
-
+    
     public function getOptionsForPaymentMethod($paymentMethod)
     {
         return collect(Arr::get($this->getPrices(), 'options'))

@@ -23,6 +23,7 @@ class StoreProductionRequest extends FormRequest
             'departments.*.name' => ['required', 'string'],
             'departments.*.manager_name' => ['required', 'string'],
             'departments.*.manager_email' => ['required', 'email'],
+            'departments.*.manager_phone' => ['nullable', 'string'],
         ];
     }
 }
