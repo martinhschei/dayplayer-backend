@@ -4,12 +4,17 @@ namespace Dayplayer\BackendModels\Helpers;
 
 class AppData
 {
+    public static function GetUserTypes()
+    {
+        return self::all()['user_types'];
+    }
+    
     public static function all()
     {
         return [
             'user_types' => [
-                'Production',
-                'Dayplayer',
+                'production',
+                'dayplayer',
             ],
             'department_types' => [
                 'Hair and make-up',
