@@ -44,10 +44,10 @@ class PriceCalculator
         [
             'base_price' => $this->price,
             'time' => [
-                'start' => $this->startDate,
                 'end' => $this->endDate,
-                'calendar' => $this->productionDaysInCalendarTimes(),
+                'start' => $this->startDate,
                 'text' => $this->explanation(),
+                'calendar' => $this->productionDaysInCalendarTimes(),
             ],
             'options' => $this->options()
         ];
@@ -80,34 +80,37 @@ class PriceCalculator
             [
                 'discount' => $this->discount(),
                 'value' => 'credit_card',
-                'displayName' => 'Credit card',
+                'display_name' => 'Credit card',
                 'price' => $this->creditCardPrice(),
                 'payment_dates' => [
                     now()->addDays(3),
                 ],
                 'payments' => 1,
-                'text' => "$ {$this->creditCardPrice()} paid now with credit card. {$this->discount()}% discount on base price.",
+                'sub_text' => "{$this->discount()}% discount on base price",
+                'text' => "$ {$this->creditCardPrice()} due in 2 days.",
             ],
             $this->canPayWeekly() ? [
                 'discount' => 0,
                 'value' => 'weekly',
-                'displayName' => 'Weekly',
+                'display_name' => 'Weekly',
                 'price' => $this->weeklyPrice(),
                 'payment_dates' => $this->generatePaymentDates('weeks'),
                 'payments' => $this->productionDaysInCalendarTimes()['weeks'],
-                'text' => "$ {$this->weeklyPrice()} due every 7 days - {$this->productionDaysInCalendarTimes()['weeks']} payments",
+                'sub_text' => "{$this->productionDaysInCalendarTimes()['weeks']} payments",
+                'text' => "$ {$this->weeklyPrice()} due every 7 days",
             ]  : null,
             $this->canPayMonthly() ? [
                 'discount' => 0,
                 'value' => 'monthly',
-                'displayName' => 'Monthly',
+                'display_name' => 'Monthly',
                 'price' =>  $this->monthlyPrice(),
                 'payment_dates' => $this->generatePaymentDates('months'),
                 'payments' => $this->productionDaysInCalendarTimes()['months'],
-                'text' => "$ {$this->monthlyPrice()} due every 4 weeks - {$this->productionDaysInCalendarTimes()['months']} payments",
+                'text' => "$ {$this->monthlyPrice()} due every 4 weeks",
+                'sub_text' => "{$this->productionDaysInCalendarTimes()['months']} payments",
             ]  : null,
         ];
-        
+
         return collect($options)->reject(function ($option) {
             return is_null($option);
         })->values();
