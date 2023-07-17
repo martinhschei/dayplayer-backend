@@ -4,6 +4,11 @@ namespace Dayplayer\BackendModels\Helpers;
 
 class AppData
 {
+    public static function GetProductionTypes()
+    {
+        return self::all()['production_types'];
+    }
+    
     public static function GetUserTypes()
     {
         return self::all()['user_types'];

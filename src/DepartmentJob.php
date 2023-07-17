@@ -13,6 +13,11 @@ class DepartmentJob extends BaseModel
         'profile_matches' => 'array',
     ];
     
+    public function getProfileMatchesAttribute($value)
+    {
+        return $value ?? [];
+    }
+    
     public static function matcheshWithProfile(Profile $profile)
     {
         return DepartmentJob::with('production')->whereIn('position', $profile->positions)
