@@ -12,12 +12,7 @@ class DepartmentJob extends BaseModel
     public $casts = [
         'profile_matches' => 'array',
     ];
-    
-    public function getProfileMatchesAttribute($value)
-    {
-        return $value ?? [];
-    }
-    
+
     public static function matcheshWithProfile(Profile $profile)
     {
         return DepartmentJob::with('production')->whereIn('position', $profile->positions)
@@ -56,10 +51,10 @@ class DepartmentJob extends BaseModel
                         'phone_number' => $profile->phone_number,
                         'union_member_since' => $profile->union_member_since
                     ];
-                })->all();
+                });
         
         $this->update([
-            'profile_matches' => $profiles
+            'profile_matches' => $profiles->count() > 0 ? $profiles->all() : null,
         ]);
         
         $this->save();
