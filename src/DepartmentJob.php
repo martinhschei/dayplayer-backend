@@ -5,6 +5,7 @@ namespace Dayplayer\BackendModels;
 use App\Http\Resources\GigResource;
 use Dayplayer\BackendModels\Profile;
 use Dayplayer\BackendModels\Production;
+use Dayplayer\BackendModels\Helpers\HelperFunctions;
 use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
 
 class DepartmentJob extends BaseModel
@@ -28,6 +29,11 @@ class DepartmentJob extends BaseModel
     {
         return DepartmentJob::where('from_date', '<=', now()->format('Y-m-d'))
             ->where('to_date', '>', now()->format('Y-m-d'))->get();
+    }
+    
+    public function getHourlyRateAttribute($value)
+    {
+        return HelperFunctions::toDollars($value);
     }
 
     public function production(): \Illuminate\Database\Eloquent\Relations\BelongsTo|\Jenssegers\Mongodb\Relations\BelongsTo
