@@ -9,7 +9,7 @@ class HelperFunctions
         if (is_null($dollarValue) || !is_numeric($dollarValue)) {
             return 0;
         }
-
+        
         return round($dollarValue * 100);
     }
 

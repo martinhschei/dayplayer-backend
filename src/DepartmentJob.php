@@ -33,7 +33,7 @@ class DepartmentJob extends BaseModel
     
     public function getHourlyRateAttribute($value)
     {
-        return HelperFunctions::toDollars($value);
+        return (string) HelperFunctions::toDollars($value);
     }
 
     public function production(): \Illuminate\Database\Eloquent\Relations\BelongsTo|\Jenssegers\Mongodb\Relations\BelongsTo
