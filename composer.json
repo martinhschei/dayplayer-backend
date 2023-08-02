@@ -8,7 +8,8 @@
         }
     },
     "require": {
-        "laravel/cashier": "^14.12"
+        "laravel/cashier": "^14.12",
+        "stephenjude/default-model-sorting": "dev-master"
     },
     "extra": {
         "laravel": {

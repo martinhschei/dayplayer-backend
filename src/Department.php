@@ -11,6 +11,16 @@ class Department extends BaseModel
         return $this->hasMany(DepartmentJob::class);
     }
     
+    public function jobsWithoutBooking()
+    {
+        return $this->jobs()->whereNull('booked_profile');
+    }
+
+    public function jobsWithBooking()
+    {
+        return $this->jobs()->whereNotNull('booked_profile');
+    }
+    
     public function manager()
     {
         return [

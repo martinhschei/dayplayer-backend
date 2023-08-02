@@ -10,6 +10,10 @@ use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
 
 class DepartmentJob extends BaseModel
 {
+    use DefaultOrderBy;
+
+    protected static $orderByColumn = 'from_date';
+
     public $casts = [
         'profile_matches' => 'array',
     ];
@@ -43,26 +47,29 @@ class DepartmentJob extends BaseModel
     
     public function updateMatches()
     {
-        $profiles = Profile::where('available', true)
-            ->whereIn('positions', explode(",", $this->position))
-            ->get()->map(function ($profile) {
+        $position = [$this->position];
+        
+        $this->update([
+            'profile_matches' =>  Profile::where('available', true)
+                ->whereIn('positions', $position)
+                ->select('id', 'bio', 'union', 'birthday', 'available', 'positions', 'phone_number', 'union_member_since')
+                ->with('user:name')
+                ->get()
+                ->map(function ($profile) {
                     return [
-                        'id' => $profile->_id,
+                        'id' => $profile->id,
                         'bio' => $profile->bio,
                         'union' => $profile->union,
+                        'name' => $profile->user->name,
                         'birthday' => $profile->birthday,
                         'available' => $profile->available,
                         'positions' => $profile->positions,
-                        'name' => $profile->user->name,
                         'phone_number' => $profile->phone_number,
                         'union_member_since' => $profile->union_member_since
                     ];
-                });
-        
-        $this->update([
-            'profile_matches' => $profiles->count() > 0 ? $profiles->all() : null,
+                })->all()
         ]);
-        
+
         $this->save();
     }
 }

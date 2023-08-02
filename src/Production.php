@@ -2,18 +2,14 @@
 
 namespace Dayplayer\BackendModels;
 
+use Stephenjude\DefaultModelSorting\Traits\DefaultOrderBy;
+
 class Production extends BaseModel
 {
-    public static function productionTypeDisplayNames()
-    {
-        return [
-            'episodic' => 'Episodic',
-            'commercial' => 'Commercial',
-            'low_budget' => 'Low budget',
-            'feature_film' => 'Feature film',
-        ];
-    }
-
+    use DefaultOrderBy;
+    
+    protected static $orderByColumn = 'start_date';
+    
     public function payments()
     {
         return $this->hasMany(Payment::class);
