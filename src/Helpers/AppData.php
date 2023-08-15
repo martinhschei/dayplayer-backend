@@ -13,6 +13,11 @@ class AppData
     {
         return self::all()['user_types'];
     }
+
+    public static function GetDepartmentTypes()
+    {
+        return self::all()['department_types'];
+    }
     
     public static function all()
     {
@@ -22,9 +27,10 @@ class AppData
                 'dayplayer',
             ],
             'department_types' => [
-                'Hair and make-up',
                 'Costumes',
-                'Food and drinks',
+                'Catering',
+                'Production',
+                'Hair and make-up',
             ],
             'union_types' => [
                 '705',

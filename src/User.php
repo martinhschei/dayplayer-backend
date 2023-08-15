@@ -13,13 +13,13 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Billable;
+    
+    public $guarded = [];
+    public $with = ['profile'];
 
     const TYPE_DAYPLAYER = 'dayplayer';
     const TYPE_PRODUCTION = 'production';
-    const TYPE_INTEGRATION = 'integration';
-    
-    public $guarded = [];
-    
+
     public $casts = [
         'email_verified' => 'boolean',
     ];
@@ -30,6 +30,11 @@ class User extends Authenticatable
         static::creating(function (User $user) {
             $user->email_verification_token = Str::uuid();
         });
+    }
+    
+    public function routeNotificationForApn()
+    {
+        return [$this->device_token];
     }
     
     public function hasProfile() 
@@ -57,19 +62,16 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
     
-    public function createDefaultProfile()
+    public function createDefaultProfile($values = [])
     {
-        $this->profile()->create([
+        $defaultValues = array_merge([
             'birthday' => now()->format('Y-m-d'),
             'union_member_since' => now()->format('Y-m-d'),
-        ]);
+        ], $values);
+        
+        $this->profile()->create($defaultValues);
     }
     
-    public function isIntegration(): bool
-    {
-        return $this->type == self::TYPE_INTEGRATION;
-    }
-
     public function isProduction(): bool
     {
         return $this->type == self::TYPE_PRODUCTION;
