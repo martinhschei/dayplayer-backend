@@ -5,14 +5,20 @@ namespace Dayplayer\BackendModels;
 use Dayplayer\BackendModels\User;
 use Dayplayer\BackendModels\Production;
 use Dayplayer\BackendModels\Conversation;
+use Dayplayer\BackendModels\Helpers\AppData;
 
 class Profile extends BaseModel
-{    
+{   
     public $casts = [
         'positions' => 'array',
         'boolean' => 'available',
     ];
     
+    public function isProductionLevel(): bool
+    {
+        return $this->department_affiliation == AppData::ProductionLevelDepartmentType;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

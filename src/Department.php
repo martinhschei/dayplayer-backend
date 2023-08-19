@@ -2,10 +2,24 @@
 
 namespace Dayplayer\BackendModels;
 
+use Cviebrock\EloquentSluggable\Sluggable;
 use Dayplayer\BackendModels\DepartmentJob;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Department extends BaseModel
 {
+    use Sluggable;
+    use SluggableScopeHelpers;
+    
+    public function sluggable(): array 
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ]
+            ];
+    }
+    
     public function jobs()
     {
         return $this->hasMany(DepartmentJob::class);

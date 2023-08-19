@@ -2,8 +2,23 @@
 
 namespace Dayplayer\BackendModels;
 
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+
 class Production extends BaseModel
-{    
+{
+    use Sluggable;
+    use SluggableScopeHelpers;
+    
+    public function sluggable(): array 
+    {
+        return [
+            'slug' => [
+                'source' => 'name',
+            ]
+            ];
+    }
+
     public function payments()
     {
         return $this->hasMany(Payment::class);

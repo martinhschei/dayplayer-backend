@@ -67,7 +67,6 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Stripe\\' => 7,
-            'Stephenjude\\DefaultModelSorting\\' => 32,
         ),
         'R' => 
         array (
@@ -115,6 +114,7 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
             'Illuminate\\Contracts\\' => 21,
             'Illuminate\\Container\\' => 21,
             'Illuminate\\Console\\' => 19,
+            'Illuminate\\Config\\' => 18,
             'Illuminate\\Bus\\' => 15,
             'Illuminate\\Broadcasting\\' => 24,
         ),
@@ -139,6 +139,8 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
         ),
         'C' => 
         array (
+            'Cviebrock\\EloquentSluggable\\' => 28,
+            'Cocur\\Slugify\\' => 14,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -268,10 +270,6 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
         array (
             0 => __DIR__ . '/..' . '/stripe/stripe-php/lib',
         ),
-        'Stephenjude\\DefaultModelSorting\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/stephenjude/default-model-sorting/src',
-        ),
         'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
@@ -338,9 +336,9 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
         ),
         'Illuminate\\Support\\' => 
         array (
-            0 => __DIR__ . '/..' . '/illuminate/conditionable',
-            1 => __DIR__ . '/..' . '/illuminate/macroable',
-            2 => __DIR__ . '/..' . '/illuminate/collections',
+            0 => __DIR__ . '/..' . '/illuminate/collections',
+            1 => __DIR__ . '/..' . '/illuminate/conditionable',
+            2 => __DIR__ . '/..' . '/illuminate/macroable',
             3 => __DIR__ . '/..' . '/illuminate/support',
         ),
         'Illuminate\\Session\\' => 
@@ -403,6 +401,10 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
         array (
             0 => __DIR__ . '/..' . '/illuminate/console',
         ),
+        'Illuminate\\Config\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/illuminate/config',
+        ),
         'Illuminate\\Bus\\' => 
         array (
             0 => __DIR__ . '/..' . '/illuminate/bus',
@@ -438,6 +440,14 @@ class ComposerStaticInitc7ca9e39919b4b797b38cd9b0ba742b9
         'Dayplayer\\BackendModels\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+        'Cviebrock\\EloquentSluggable\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cviebrock/eloquent-sluggable/src',
+        ),
+        'Cocur\\Slugify\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cocur/slugify/src',
         ),
         'Carbon\\' => 
         array (
