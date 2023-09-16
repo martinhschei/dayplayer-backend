@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('departments', function (Blueprint $table) {
-            $table->timestamp('invited_at')->nullable()->change();
+            $table->datetime('invited_at')->nullable()->change();
         });
     }
     
