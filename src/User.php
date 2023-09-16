@@ -7,6 +7,7 @@ use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Dayplayer\BackendModels\Profile;
 use Illuminate\Notifications\Notifiable;
+use Dayplayer\BackendModels\Helpers\AppData;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -14,12 +15,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Billable;
     
+    public $appends = [
+        'is_production_level',
+    ];
+    
     public $guarded = [];
     public $with = ['profile'];
-
-    const TYPE_DAYPLAYER = 'dayplayer';
-    const TYPE_PRODUCTION = 'production';
-
+    
     public $casts = [
         'email_verified' => 'boolean',
     ];
@@ -32,6 +34,11 @@ class User extends Authenticatable
         });
     }
     
+    public function getIsProductionLevelAttribute()
+    {
+        return $this->profile->department_affiliation == AppData::ProductionLevelDepartmentType && $this->isProduction();
+    }
+
     public function routeNotificationForApn()
     {
         return [$this->device_token];
@@ -62,6 +69,11 @@ class User extends Authenticatable
         return $this->hasOne(Profile::class);
     }
     
+    public function managedDepartments()
+    {
+        return $this->hasMany(Department::class, 'manager_id');
+    }
+    
     public function createDefaultProfile($values = [])
     {
         $defaultValues = array_merge([
@@ -74,12 +86,12 @@ class User extends Authenticatable
     
     public function isProduction(): bool
     {
-        return $this->type == self::TYPE_PRODUCTION;
+        return $this->type == AppData::ProductionUserType;
     }
     
     public function isDayplayer(): bool
     {
-        return $this->type == self::TYPE_DAYPLAYER;
+        return $this->type == AppData::DayplayerUserType;
     }
 
     public function uniqueManagers()
@@ -88,13 +100,10 @@ class User extends Authenticatable
         
         foreach ($this->productions as $production) {
             foreach ($production->departments as $department) {
-                $managers[] = [
-                    'name' => $department->manager_name,
-                    'email' => $department->manager_email,
-                ];
+                $managers[] = $department->manager_email;
             }
         }
-
+        
         return $managers->unique();
     }
     

@@ -21,7 +21,6 @@ class UpdateProductionRequest extends FormRequest
             'production_type' => ['required', 'string'],
             'name' => ['required', 'string',  'max:150'],
             'departments.*.name' => ['required', 'string'],
-            'departments.*.manager_name' => ['required', 'string'],
             'departments.*.manager_email' => ['required', 'email'],
             'departments.*.manager_phone' => ['nullable', 'string'],
         ];

@@ -13,11 +13,6 @@ class Profile extends BaseModel
         'positions' => 'array',
         'boolean' => 'available',
     ];
-    
-    public function isProductionLevel(): bool
-    {
-        return $this->department_affiliation == AppData::ProductionLevelDepartmentType;
-    }
 
     public function user()
     {

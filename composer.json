@@ -9,7 +9,7 @@
     },
     "require": {
         "laravel/cashier": "^14.12",
-        "cviebrock/eloquent-sluggable": "dev-master"
+        "cviebrock/eloquent-sluggable": "^10.0"
     },
     "extra": {
         "laravel": {
