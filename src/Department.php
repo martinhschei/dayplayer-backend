@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Dayplayer\BackendModels\User;
 use Illuminate\Support\Facades\Hash;
+use Dayplayer\BackendModels\BaseModel;
+use Dayplayer\BackendModels\Production;
 use Dayplayer\BackendModels\DepartmentJob;
 use Dayplayer\BackendModels\Helpers\AppData;
 
@@ -60,7 +62,7 @@ class Department extends BaseModel
 
         return $user;
     }
-
+    
     public function production()
     {
         return $this->belongsTo(Production::class);

@@ -16,7 +16,7 @@ class Production extends BaseModel
             'slug' => [
                 'source' => 'name',
             ]
-            ];
+        ];
     }
 
     public function payments()
@@ -33,7 +33,7 @@ class Production extends BaseModel
     {
         return $this->hasOne(User::class, 'user_id');
     }
-    
+
     public function getProductNameAttribute()
     {
         return "{$this->name} // {$this->start_date}-{$this->end_date}";

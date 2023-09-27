@@ -4,15 +4,10 @@ namespace Dayplayer\BackendModels;
 
 use Illuminate\Support\Str;
 use Dayplayer\BackendModels\User;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Dayplayer\BackendModels\BaseModel;
 
-class PasswordSetLink extends Model
+class PasswordSetLink extends BaseModel
 {
-    protected $fillable = [
-        'user_id', 'token', 'expires_at'
-    ];
-
     public static function createForUser(User $user)
     {
         return self::create([

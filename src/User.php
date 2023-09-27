@@ -15,13 +15,12 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, Billable;
     
+    public $guarded = [];
+
     public $appends = [
         'is_production_level',
     ];
-    
-    public $guarded = [];
-    public $with = ['profile'];
-    
+
     public $casts = [
         'email_verified' => 'boolean',
     ];
@@ -33,7 +32,7 @@ class User extends Authenticatable
             $user->email_verification_token = Str::uuid();
         });
     }
-    
+
     public function getIsProductionLevelAttribute()
     {
         return $this->profile->department_affiliation == AppData::ProductionLevelDepartmentType && $this->isProduction();
@@ -43,7 +42,7 @@ class User extends Authenticatable
     {
         return [$this->device_token];
     }
-    
+
     public function hasProfile() 
     {
         return ! is_null($this->profile);
@@ -53,7 +52,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Conversation::class);
     }
-    
+
     public function productions()
     {
         return $this->hasMany(Production::class);
