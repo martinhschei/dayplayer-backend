@@ -6,8 +6,13 @@ use Dayplayer\BackendModels\BaseModel;
 
 class ChatMessage extends BaseModel
 {
-    public function sentByMe()
+    public function conversation()
     {
-        return auth()->id() === $this->sender_id;
+        return $this->belongsTo(Conversation::class);
+    }
+    
+    public function sender()
+    {
+        return $this->belongsTo(Profile::class);
     }
 }

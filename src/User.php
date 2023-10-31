@@ -20,10 +20,12 @@ class User extends Authenticatable
     public $appends = [
         'is_production_level',
     ];
-
+    
     public $casts = [
         'email_verified' => 'boolean',
     ];
+        
+    public $hidden = ['password'];
     
     public static function boot() {
         parent::boot();

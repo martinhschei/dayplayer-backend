@@ -27,12 +27,7 @@ class DepartmentJob extends BaseModel
             }
         });
     }
-
-    public function department()
-    {
-        return $this->belongsTo(Department::class);
-    }
-    
+        
     public function production()
     {
         return $this->belongsTo(Production::class);
