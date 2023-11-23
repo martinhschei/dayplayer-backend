@@ -8,15 +8,13 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('bookings', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('job_profile_match_id');
-            $table->timestamps();
+        Schema::table('dayplan_position_groups', function (Blueprint $table) {
+            $table->unsignedBigInteger('department_id')->references('id')->on('departments')->onDelete('cascade');
         });
     }
     
     public function down(): void
     {
-        Schema::dropIfExists('bookings');
+        //
     }
 };

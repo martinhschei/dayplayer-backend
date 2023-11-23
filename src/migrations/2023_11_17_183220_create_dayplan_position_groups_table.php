@@ -8,15 +8,14 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('productions', function (Blueprint $table) {
-            $table->string('production_type');
+        Schema::create('dayplan_position_groups', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
     
     public function down(): void
     {
-        Schema::table('productions', function (Blueprint $table) {
-            $table->dropColumn('production_type');
-        });
+        Schema::dropIfExists('dayplan_position_groups');
     }
 };

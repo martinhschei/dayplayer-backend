@@ -10,6 +10,15 @@ class AppData
     public const ProductionUserType = "department_head";
     public const ProductionLevelDepartmentType = "Production";
 
+    public static function GetGenders()
+    {
+        return [
+            'male',
+            'other',
+            'female',
+        ];
+    }
+
     public static function ProfessionsHiredDirectlyOnProductionLevel() 
     {
         return [
@@ -21,6 +30,15 @@ class AppData
         ];
     }
     
+    public static function PaymentMethods()
+    {
+        return [
+            'credit_card',
+            'monthly_invoice',
+            'weekly_invoice',
+        ];
+    }
+
     public static function GetPositionsForDepartment($department)
     {
         return Arr::get(self::all(), "department_positions.{$department}", []);
@@ -43,7 +61,7 @@ class AppData
     {
         return self::all()['department_types'];
     }
-
+    
     public static function GetAllDepartmentTypes()
     {
         return self::all()['department_types']['production'];
@@ -70,6 +88,11 @@ class AppData
         });
     }
 
+    public static function getDepartmentPositions($department)
+    {
+        return self::all()['department_positions'][$department] ?? [];
+    }
+
     public static function all()
     {
         $userTypes = self::GetUserTypes();
@@ -81,7 +104,7 @@ class AppData
         $hiredDirectlyOnProductionLevel = self::ProfessionsHiredDirectlyOnProductionLevel();
         $dayplayerDepartments = array_merge($productionDepartments, $hiredDirectlyOnProductionLevel);
         self::order($dayplayerDepartments);
-
+        
         return [
             'user_types' => $userTypes,
             'department_types' => [
@@ -95,7 +118,8 @@ class AppData
                     "Ager/Dyer",
                     "BG costumer",
                     "Coordinator",
-                    "Key Costumer",
+                    "Key costumer",
+                    "Set costumer",
                     "Trailer costumer",
                     "Tailor/Seamstress", 
                     "Principal costumer",
@@ -107,10 +131,10 @@ class AppData
                 '892',
             ],
             'production_types' => [
-                'Episodic',
-                'Commercial',
-                'Low budget',
                 'Feature film',
+                'Commercial',
+                'Episodic',
+                'Low budget',
             ],
         ];
     }

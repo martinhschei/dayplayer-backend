@@ -8,16 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('departments', function (Blueprint $table) {
-            $table->dropColumn('manager_name');
+        Schema::table('job_offers', function (Blueprint $table) {
+            $table->timestamp('declined_at')->nullable();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        //
+        Schema::table('job_offers', function (Blueprint $table) {
+            $table->dropColumn('declined_at');
+        });
     }
 };

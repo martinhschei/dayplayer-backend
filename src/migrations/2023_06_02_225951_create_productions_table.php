@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -10,13 +10,12 @@ return new class extends Migration
     {
         Schema::create('productions', function (Blueprint $table) {
             $table->id();
+            $table->string('type');
             $table->string('name');
-            $table->unsignedBigInteger('price');
-            $table->date('start_date');
             $table->date('end_date');
+            $table->date('start_date');
+            $table->string('studio_name');
             $table->unsignedBigInteger('user_id');
-            $table->date('payment_deadline');
-            $table->string('payment_status')->default('unpaid');
             $table->timestamps();
         });
     }

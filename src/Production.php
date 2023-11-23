@@ -3,6 +3,7 @@
 namespace Dayplayer\BackendModels;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Dayplayer\BackendModels\ProductionBillingDetails;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
 class Production extends BaseModel
@@ -10,6 +11,8 @@ class Production extends BaseModel
     use Sluggable;
     use SluggableScopeHelpers;
     
+    public $with = ['billingDetails'];
+
     public function sluggable(): array 
     {
         return [
@@ -18,19 +21,19 @@ class Production extends BaseModel
             ]
         ];
     }
-
-    public function payments()
-    {
-        return $this->hasMany(Payment::class);
-    }
     
+    public function billingDetails()
+    {   
+        return $this->hasOne(ProductionBillingDetails::class);
+    }
+
     public function departments()
     {
         return $this->hasMany(Department::class);
     }
 
     public function admin()
-    {
+    {   
         return $this->hasOne(User::class, 'user_id');
     }
 

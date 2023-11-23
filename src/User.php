@@ -3,38 +3,27 @@
 namespace Dayplayer\BackendModels;
 
 use Illuminate\Support\Str;
-use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Dayplayer\BackendModels\Profile;
 use Illuminate\Notifications\Notifiable;
 use Dayplayer\BackendModels\Helpers\AppData;
+use Dayplayer\BackendModels\EmailVerificationCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Billable;
+    use HasApiTokens, HasFactory, Notifiable;
     
     public $guarded = [];
 
-    public $appends = [
-        'is_production_level',
-    ];
-    
-    public $casts = [
-        'email_verified' => 'boolean',
-    ];
-        
     public $hidden = ['password'];
     
-    public static function boot() {
-        parent::boot();
-
-        static::creating(function (User $user) {
-            $user->email_verification_token = Str::uuid();
-        });
+    public function scopeVerified($query)
+    {
+        return $query->whereNotNull('email_verified_at');
     }
-
+    
     public function getIsProductionLevelAttribute()
     {
         return $this->profile->department_affiliation == AppData::ProductionLevelDepartmentType && $this->isProduction();
@@ -49,15 +38,52 @@ class User extends Authenticatable
     {
         return ! is_null($this->profile);
     }
+    
+    public function availabilitySettings()
+    {
+        return $this->hasOne(AvailabilitySettings::class);
+    }
 
     public function conversations()
     {
         return $this->belongsToMany(Conversation::class);
     }
-
+    
     public function productions()
     {
         return $this->hasMany(Production::class);
+    }
+    
+    public function currentDepartment()
+    {
+        if (is_null($this->current_department_id)) {
+            return null;
+        }
+        
+        return $this->departmentLevelProductions()->whereHas('departments', function ($query) {
+            $query->where('id', $this->current_department_id);
+        })->first()->departments->first();
+    }
+    
+    public function departmentLevelProductions()
+    {
+        return Production::whereHas('departments', function ($query) {
+            $query->where('manager_id', $this->id);
+        })->with(['departments' => function ($query) {
+            $query->where('manager_id', $this->id);
+        }]);
+    }
+    
+    public function allProductions()
+    {
+        $productionsQuery = $this->productions()->getQuery();
+
+        return $productionsQuery->union($this->departmentLevelProductions());
+    }
+    
+    public function getProduction($id)
+    {
+        return $this->departmentLevelProductions()->where('id', $id)->first() ?? $this->productions()->where('id', $id)->first();
     }
 
     public function profileId()
@@ -75,6 +101,11 @@ class User extends Authenticatable
         return $this->hasMany(Department::class, 'manager_id');
     }
     
+    public function emailVerificationCode()
+    {
+        return $this->hasOne(EmailVerificationCode::class);
+    }
+    
     public function createDefaultProfile($values = [])
     {
         $defaultValues = array_merge([
@@ -89,7 +120,7 @@ class User extends Authenticatable
     {
         return $this->type == AppData::ProductionUserType;
     }
-    
+        
     public function isDayplayer(): bool
     {
         return $this->type == AppData::DayplayerUserType;
@@ -119,17 +150,5 @@ class User extends Authenticatable
         }
 
         return $departmens->unique();
-    }
-
-    public function hasVerifiedEmail(): bool
-    {
-        return $this->email_verified === true;
-    }
-
-    public function emailVerified()
-    {
-        $this->update([
-            'email_verified' => true,
-        ]);
     }
 }

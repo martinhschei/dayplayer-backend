@@ -8,11 +8,16 @@ use Dayplayer\BackendModels\User;
 use Illuminate\Support\Facades\Hash;
 use Dayplayer\BackendModels\BaseModel;
 use Dayplayer\BackendModels\Production;
+use Dayplayer\BackendModels\DayplanGroup;
 use Dayplayer\BackendModels\DepartmentJob;
 use Dayplayer\BackendModels\Helpers\AppData;
+use Dayplayer\BackendModels\DepartmentDetails;
+use Dayplayer\BackendModels\DayplanPositionGroup;
 
 class Department extends BaseModel
 {
+    public $with = ['details'];
+    
     public function shouldNotifyManager()
     {
         return ! $this->isManagerInvited() && ! $this->authUserIsManager();
@@ -28,10 +33,25 @@ class Department extends BaseModel
             return $this->manager->id === auth()->id();
         }
     }
-
-    public function isManagerInvited()
+    
+    public function schedule()
     {
-        return ! is_null($this->invited_at);
+        return $this->hasMany(Dayplan::class);
+    }
+
+    public function positionGroups()
+    {
+        return $this->hasMany(DayplanPositionGroup::class);
+    }
+    
+    public function positions()
+    {
+        return $this->hasManyThrough(DayplanPosition::class, Dayplan::class);
+    }
+    
+    public function managerIsNotInvited()
+    {
+        return is_null($this->invited_at);
     }
 
     public function managerInvited()
@@ -40,27 +60,15 @@ class Department extends BaseModel
             'invited_at' => now(),
         ]);
     }
+    
+    public function details()
+    {
+        return $this->hasOne(DepartmentDetails::class);
+    }
 
     public function manager()
     {
         return $this->belongsTo(User::class, 'manager_id');
-    }
-    
-    public function createDepartmentHeadUser(): User
-    {
-        $user = User::create([
-            'type' => AppData::ProductionUserType,
-            'password' => Hash::make(Str::random(40)),
-            'name' => strtolower($this->manager_email),
-            'email' => strtolower($this->manager_email),
-        ]);
-
-        $user->createDefaultProfile([
-            'department_affiliation' => $this->name,
-            'birthday' => Carbon::createFromFormat('Y-m-d H:i:s', '1900-01-01 00:00:00'),
-        ]);
-
-        return $user;
     }
     
     public function production()

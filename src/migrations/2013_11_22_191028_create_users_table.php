@@ -14,13 +14,18 @@ return new class extends Migration
             $table->string('password');
             $table->string('last_name');
             $table->string('first_name');
+            $table->string('department');
+            $table->string('phone_number');
             $table->string('email')->unique();
-            $table->string('email_verification_token');
-            $table->boolean('email_verified')->default(false);
+            $table->string('gender')->nullable();
+            $table->date('date_of_birth')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
+            $table->unsignedBigInteger('current_department_id')->nullable();
+            $table->unsignedBigInteger('current_production_id')->nullable();
             $table->timestamps();
         });
     }
-
+    
     public function down()
     {
         Schema::dropIfExists('users');

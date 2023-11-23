@@ -8,18 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('account_setup_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('manager_email');
-            $table->unsignedBigInteger('production_id');
-            $table->unsignedBigInteger('manager_id')->nullable();
+            $table->uuid('value');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
     }
-    
+
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('account_setup_tokens');
     }
 };

@@ -8,15 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('departments', function (Blueprint $table) {
-            $table->unsignedBigInteger('manager_id')->nullable();
+        Schema::table('dayplan_positions', function (Blueprint $table) {
+            $table->unsignedBigInteger('dayplan_position_group_id')->nullable()->change();
         });
     }
-    
+        
     public function down(): void
     {
-        Schema::table('departments', function (Blueprint $table) {
-            $table->dropColumn('manager_id');
+        Schema::table('dayplan_positions', function (Blueprint $table) {
+            //
         });
     }
 };

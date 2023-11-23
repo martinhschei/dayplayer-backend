@@ -8,8 +8,8 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('productions', function (Blueprint $table) {
-            $table->dropColumn(['price', 'payment_status', 'payment_deadline']);
+        Schema::table('dayplan_positions', function (Blueprint $table) {
+            $table->date('date')->nullable();
         });
     }
     

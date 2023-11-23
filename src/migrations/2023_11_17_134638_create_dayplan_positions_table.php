@@ -8,18 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('dayplan_positions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('manager_email');
-            $table->unsignedBigInteger('production_id');
-            $table->unsignedBigInteger('manager_id')->nullable();
+            $table->smallInteger('count');
+            $table->unsignedBigInteger('dayplan_id')->references('id')->on('dayplans')->onDelete('cascade');
             $table->timestamps();
         });
     }
     
     public function down(): void
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('dayplan_positions');
     }
 };

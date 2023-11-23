@@ -8,15 +8,15 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::table('productions', function (Blueprint $table) {
-            $table->string('payment_method');
+        Schema::table('job_offers', function (Blueprint $table) {
+            $table->timestamp('accepted_at')->nullable();
         });
     }
-    
+
     public function down(): void
     {
-        Schema::table('productions', function (Blueprint $table) {
-            //
+        Schema::table('job_offers', function (Blueprint $table) {
+            $table->dropColumn('accepted_at');
         });
     }
 };
