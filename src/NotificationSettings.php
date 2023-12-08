@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace Dayplayer\BackendModels;
 
 use Dayplayer\BackendModels\BaseModel;
 

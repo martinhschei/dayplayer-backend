@@ -93,6 +93,11 @@ class AppData
         return self::all()['department_positions'][$department] ?? [];
     }
 
+    public static function cities()
+    {
+        return self::all()['cities'];
+    }
+
     public static function all()
     {
         $userTypes = self::GetUserTypes();
@@ -110,6 +115,9 @@ class AppData
             'department_types' => [
                 'dayplayer' => $dayplayerDepartments,
                 'department_head' => $productionDepartments,
+            ],
+            'cities' => [
+                'Los Angeles',
             ],
             'department_positions' => [
                 'Costume' => [

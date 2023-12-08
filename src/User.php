@@ -2,11 +2,14 @@
 
 namespace Dayplayer\BackendModels;
 
-use Illuminate\Support\Str;
 use Laravel\Sanctum\HasApiTokens;
 use Dayplayer\BackendModels\Profile;
+use Dayplayer\BackendModels\CalendarDay;
 use Illuminate\Notifications\Notifiable;
 use Dayplayer\BackendModels\Helpers\AppData;
+use Dayplayer\BackendModels\VacationSettings;
+use Dayplayer\BackendModels\AvailabilitySettings;
+use Dayplayer\BackendModels\NotificationSettings;
 use Dayplayer\BackendModels\EmailVerificationCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +19,6 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
     
     public $guarded = [];
-
     public $hidden = ['password'];
     
     public function scopeVerified($query)
@@ -39,9 +41,24 @@ class User extends Authenticatable
         return ! is_null($this->profile);
     }
     
-    public function availabilitySettings()
+    public function calendarDays()
     {
-        return $this->hasOne(AvailabilitySettings::class);
+        return $this->hasMany(CalendarDay::class);
+    }
+    
+    public function workPreferences()
+    {
+        return $this->hasOne(WorkPreferences::class);
+    }
+
+    public function notificationSettings()
+    {
+        return $this->hasOne(NotificationSettings::class);
+    }
+    
+    public function vacationSettings()
+    {
+        return $this->hasOne(VacationSettings::class);
     }
 
     public function conversations()

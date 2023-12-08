@@ -3,7 +3,7 @@
         'name' => 'dayplayer/backend-models',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3557af0883d4aef12ec762cfe1851339e799e10c',
+        'reference' => '25200462a9e459dc9a63383bfe2c39fbca99af9b',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -51,7 +51,7 @@
         'dayplayer/backend-models' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3557af0883d4aef12ec762cfe1851339e799e10c',
+            'reference' => '25200462a9e459dc9a63383bfe2c39fbca99af9b',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -69,7 +69,7 @@
         'illuminate/collections' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => '30486150eea25b26387b001c1e461a2fcd1dbd47',
+            'reference' => '8e4c4f97ea066cd6aec962ef8a6abc09dfd5e754',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/collections',
             'aliases' => array(),
@@ -114,7 +114,7 @@
         'illuminate/database' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => '51b73ff50c0ba98317f4f34fd0c5476aab91941d',
+            'reference' => '1d9399eef70aef7ff58baefa548ebe60933373a3',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/database',
             'aliases' => array(),
@@ -132,7 +132,7 @@
         'illuminate/support' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => 'f8cc5c6445ef49e16dc1ee72e6dbeebdbbfcb809',
+            'reference' => '4eeecb17a5a798556b573843e8964faaf7dba290',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/support',
             'aliases' => array(),
@@ -141,7 +141,7 @@
         'nesbot/carbon' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '9051283ef6398c349ef1a5283f3d95c561115db3',
+            'reference' => '87baf0e6ff475f2add18a9f5f839ea0a8178f533',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(
@@ -224,7 +224,7 @@
         'symfony/translation' => array(
             'pretty_version' => '6.4.x-dev',
             'version' => '6.4.9999999.9999999-dev',
-            'reference' => '25816e0b4526e682db5e1101194327f39956a3ea',
+            'reference' => '05d681ee22bd1ed07a5468544c408fe696bda7b0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/translation',
             'aliases' => array(),

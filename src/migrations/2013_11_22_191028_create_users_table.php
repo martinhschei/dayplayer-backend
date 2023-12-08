@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('gender')->nullable();
             $table->date('date_of_birth')->nullable();
+            $table->string('profile_picture_url')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->unsignedBigInteger('current_department_id')->nullable();
             $table->unsignedBigInteger('current_production_id')->nullable();

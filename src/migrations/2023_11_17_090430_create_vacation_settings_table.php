@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('availability_settings', function (Blueprint $table) {
+        Schema::create('vacation_settings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->date('pause_end')->nullable();
