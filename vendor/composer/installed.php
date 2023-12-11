@@ -3,7 +3,7 @@
         'name' => 'dayplayer/backend-models',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '25200462a9e459dc9a63383bfe2c39fbca99af9b',
+        'reference' => 'ff079481dd342bfc9d1cbc1b7a8b395f42a73bc7',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'carbonphp/carbon-doctrine-types' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '49856fbc09fe91b5433381faec60e3620ad364ad',
+            'reference' => 'a31d3358a2a5d6ae947df1691d1f321418a5f3d5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../carbonphp/carbon-doctrine-types',
             'aliases' => array(
@@ -51,7 +51,7 @@
         'dayplayer/backend-models' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '25200462a9e459dc9a63383bfe2c39fbca99af9b',
+            'reference' => 'ff079481dd342bfc9d1cbc1b7a8b395f42a73bc7',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -114,7 +114,7 @@
         'illuminate/database' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => '1d9399eef70aef7ff58baefa548ebe60933373a3',
+            'reference' => 'eb9fd9ebf360ca45c940c9a8c59d3090c9e118f7',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/database',
             'aliases' => array(),
@@ -132,7 +132,7 @@
         'illuminate/support' => array(
             'pretty_version' => '10.x-dev',
             'version' => '10.9999999.9999999.9999999-dev',
-            'reference' => '4eeecb17a5a798556b573843e8964faaf7dba290',
+            'reference' => 'd8f6d59c0af7b5f4933ddd38dce5d8b0e9061e98',
             'type' => 'library',
             'install_path' => __DIR__ . '/../illuminate/support',
             'aliases' => array(),
@@ -141,7 +141,7 @@
         'nesbot/carbon' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '87baf0e6ff475f2add18a9f5f839ea0a8178f533',
+            'reference' => 'a29411a5826afa0953a42f85b14fcc71e8e2d425',
             'type' => 'library',
             'install_path' => __DIR__ . '/../nesbot/carbon',
             'aliases' => array(

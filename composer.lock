@@ -67,12 +67,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/CarbonPHP/carbon-doctrine-types.git",
-                "reference": "49856fbc09fe91b5433381faec60e3620ad364ad"
+                "reference": "a31d3358a2a5d6ae947df1691d1f321418a5f3d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/49856fbc09fe91b5433381faec60e3620ad364ad",
-                "reference": "49856fbc09fe91b5433381faec60e3620ad364ad",
+                "url": "https://api.github.com/repos/CarbonPHP/carbon-doctrine-types/zipball/a31d3358a2a5d6ae947df1691d1f321418a5f3d5",
+                "reference": "a31d3358a2a5d6ae947df1691d1f321418a5f3d5",
                 "shasum": ""
             },
             "require": {
@@ -113,7 +113,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CarbonPHP/carbon-doctrine-types/issues",
-                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.0.0"
+                "source": "https://github.com/CarbonPHP/carbon-doctrine-types/tree/3.1.0"
             },
             "funding": [
                 {
@@ -129,7 +129,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-10-01T14:36:55+00:00"
+            "time": "2023-12-10T15:33:53+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -622,12 +622,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/database.git",
-                "reference": "1d9399eef70aef7ff58baefa548ebe60933373a3"
+                "reference": "eb9fd9ebf360ca45c940c9a8c59d3090c9e118f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/database/zipball/1d9399eef70aef7ff58baefa548ebe60933373a3",
-                "reference": "1d9399eef70aef7ff58baefa548ebe60933373a3",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/eb9fd9ebf360ca45c940c9a8c59d3090c9e118f7",
+                "reference": "eb9fd9ebf360ca45c940c9a8c59d3090c9e118f7",
                 "shasum": ""
             },
             "require": {
@@ -683,7 +683,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-12-01T15:16:16+00:00"
+            "time": "2023-12-11T16:13:49+00:00"
         },
         {
             "name": "illuminate/macroable",
@@ -737,12 +737,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "4eeecb17a5a798556b573843e8964faaf7dba290"
+                "reference": "d8f6d59c0af7b5f4933ddd38dce5d8b0e9061e98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/4eeecb17a5a798556b573843e8964faaf7dba290",
-                "reference": "4eeecb17a5a798556b573843e8964faaf7dba290",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/d8f6d59c0af7b5f4933ddd38dce5d8b0e9061e98",
+                "reference": "d8f6d59c0af7b5f4933ddd38dce5d8b0e9061e98",
                 "shasum": ""
             },
             "require": {
@@ -800,7 +800,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2023-11-30T22:33:19+00:00"
+            "time": "2023-12-09T15:18:21+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -808,12 +808,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "87baf0e6ff475f2add18a9f5f839ea0a8178f533"
+                "reference": "a29411a5826afa0953a42f85b14fcc71e8e2d425"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/87baf0e6ff475f2add18a9f5f839ea0a8178f533",
-                "reference": "87baf0e6ff475f2add18a9f5f839ea0a8178f533",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/a29411a5826afa0953a42f85b14fcc71e8e2d425",
+                "reference": "a29411a5826afa0953a42f85b14fcc71e8e2d425",
                 "shasum": ""
             },
             "require": {
@@ -908,7 +908,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-01T22:30:17+00:00"
+            "time": "2023-12-09T14:08:53+00:00"
         },
         {
             "name": "psr/clock",
