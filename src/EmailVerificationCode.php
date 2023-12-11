@@ -32,7 +32,7 @@ class EmailVerificationCode extends BaseModel
     
     private static function createCode()
     {
-        return rand(0001, 9999);
+        return rand(1000, 9999);
     }
 
     public function user()
