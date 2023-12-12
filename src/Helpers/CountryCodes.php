@@ -29,12 +29,12 @@ class CountryCodes
         $list = collect(explode("\n", $countries));
         
         $list = $list->reject(function ($country) {
-            return startsWith($country, "#");
+            return str_starts_with($country, "#");
         });
-
+        
         return $list->map(function ($country) {
             $parts = explode(",", $country);
-            
+
             if (is_null($parts) || count($parts) !== 2) {
                 return [
                     'name' => "",
