@@ -42,6 +42,8 @@ class CountryCodes
                 'name' => $parts[0],
                 'country_code' => $parts[1],
             ];
+        })->reject(function ($country) {
+            return $country['name'] == "";
         });
     }
 
