@@ -3,6 +3,7 @@
 namespace Dayplayer\BackendModels\Helpers;
 
 use Illuminate\Support\Arr;
+use Dayplayer\BackendModels\Helpers\CountryCodes;
 
 class AppData
 {
@@ -144,6 +145,7 @@ class AppData
                 'Episodic',
                 'Low budget',
             ],
+            'countries' => (new CountryCodes())->list(),
         ];
     }
 }
