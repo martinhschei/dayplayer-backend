@@ -27,10 +27,14 @@ class CountryCodes
     private function format($countries)
     {
         $list = collect(explode("\n", $countries));
+        
+        $list = $list->reject(function ($country) {
+            return startsWith($country, "#");
+        });
 
         return $list->map(function ($country) {
             $parts = explode(",", $country);
-
+            
             if (is_null($parts) || count($parts) !== 2) {
                 return [
                     'name' => "",
