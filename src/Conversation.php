@@ -11,6 +11,6 @@ class Conversation extends BaseModel
     
     public function participants()
     {
-        return $this->belongsToMany(Profile::class);
+        return $this->belongsToMany(User::class);
     }
 }

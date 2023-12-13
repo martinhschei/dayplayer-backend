@@ -13,6 +13,6 @@ class ChatMessage extends BaseModel
     
     public function sender()
     {
-        return $this->belongsTo(Profile::class);
+        return $this->belongsTo(User::class, 'sender_id');
     }
 }
