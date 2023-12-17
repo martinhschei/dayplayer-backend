@@ -55,11 +55,8 @@ class CountryCodes
     {
         $topCountries = [
             'United States',
-            'Mexico',
-            'United Kingdom',
-            'Canada', 
         ];
-    
+        
         $preferred = $countries->filter(function ($country) use ($topCountries) {
             return in_array($country['name'], $topCountries);
         });
