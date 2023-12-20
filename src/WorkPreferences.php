@@ -10,6 +10,6 @@ class WorkPreferences extends BaseModel
         'positions' => 'array',
         'last_positions' => 'array',
         'night_shoots' => 'boolean',
-        'unavailable_in_weekends' => 'boolean',
+        'available_in_weekends' => 'boolean',
     ];
 }
