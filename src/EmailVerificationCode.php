@@ -14,7 +14,7 @@ class EmailVerificationCode extends BaseModel
     protected static function boot()
     {
         parent::boot();
-
+        
         static::creating(function ($model) {
             $model->token = Str::uuid()->toString();
         });
