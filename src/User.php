@@ -77,7 +77,7 @@ class User extends Authenticatable
             return null;
         }
         
-        return $this->departmentLevelProductions()->whereHas('departments', function ($query) {
+        return $this->productions()->whereHas('departments', function ($query) {
             $query->where('id', $this->current_department_id);
         })->first()->departments->first();
     }
