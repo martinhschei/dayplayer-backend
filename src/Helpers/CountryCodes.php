@@ -69,6 +69,6 @@ class CountryCodes
             return in_array($country['name'], $topCountries);
         });
         
-        return $preferredSorted->merge($others)->values()->all();
+        return $preferredSorted->merge($others)->values();
     }
 }
